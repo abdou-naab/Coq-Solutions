@@ -121,20 +121,13 @@ rev_involutive: forall (X : Type) (l : list X), rev (rev l) = l
 map_rev: forall *)
 
 Search rev.
-
+(** we are not supposed to use induction here !!**)
 Theorem rev_exercise1 : forall (l l' : list nat),
      l = rev l' ->
      l' = rev l.
 Proof.
-  intros l l' H.
-  - induction l'. 
-    symmetry. 
-    rewrite -> H.
-    apply rev_involutive. 
-    symmetry. 
-    rewrite -> H. 
-    apply rev_involutive.
-Qed.
+ intros.  rewrite H. Search rev. rewrite rev_involutive.
+reflexivity. Qed.
 
 
 
